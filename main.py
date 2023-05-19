@@ -25,8 +25,8 @@ while len(guessed_states) < 28:
     if answer_text in all_states:
         guessed_states.append(answer_text)
         t = turtle.Turtle()
-        t.color("white")
         t.hideturtle()
+        t.color("white")
         t.penup()
         state_data = data[data.state == answer_text]
         t.goto(int(state_data.x.iloc[0]), int(state_data.y.iloc[0]))
