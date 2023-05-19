@@ -12,16 +12,12 @@ all_states = data.state.tolist()
 guessed_states = []
 remaining_states = []
 
-game_running = True
-
-while game_running:
+while len(guessed_states) < 28:
     answer_text = screen.textinput(title=f"{len(guessed_states)}/28 States Guessed",
                                    prompt="What's another state name?").title()
 
     if answer_text == "Exit":
-        for states in all_states:
-            if states not in guessed_states:
-                remaining_states.append(states)
+        remaining_states = [state for state in all_states if state not in guessed_states]
         df = pandas.DataFrame(remaining_states)
         df.to_csv("remaining_states")
         break
